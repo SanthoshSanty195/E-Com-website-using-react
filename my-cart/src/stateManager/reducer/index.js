@@ -1,20 +1,15 @@
-import { createStore } from "redux";
-import { combineReducers } from "redux";
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from "redux-persist/lib/storage";
-import apiData from './apiData.reducer';
-
-const persistConfig = {
-    key: 'root',
-    storage,
-}
+import { createStore, combineReducers } from 'redux';
+import cartReducer from './apiData.reducer';
 
 
 const rootReducer = combineReducers({
-    apiData
-})
+    cart: cartReducer,
+});
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export let store = createStore(persistedReducer);
-export let persist = persistStore(store);
+
+const store = createStore(rootReducer);
+
+
+
+export default store;

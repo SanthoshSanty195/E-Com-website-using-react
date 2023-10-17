@@ -56,11 +56,11 @@ const Products = () => {
     return (
       <>
         <div className="buttons d-flex justify-content-center mb-5 pb-5">
-          <button className="btn btn-outline-dark me-2" onClick={() => setFilter(products)}>All</button>
-          <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("men's clothing")}>Men's Clothing</button>
-          <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("women's clothing")}>Women's Clothing</button>
-          <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("jewelery")}>Jewelery</button>
-          <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("electronics")}>Electronic</button>
+          <button className="btn btn-dark me-2" onClick={() => setFilter(products)}>All</button>
+          <button className="btn btn-success me-2" onClick={() => filterProduct("men's clothing")}>Men's Clothing</button>
+          <button className="btn btn-danger me-2" onClick={() => filterProduct("women's clothing")}>Women's Clothing</button>
+          <button className="btn btn-warning me-2" onClick={() => filterProduct("jewelery")}>Jewelery</button>
+          <button className="btn btn-info me-2" onClick={() => filterProduct("electronics")}>Electronic</button>
         </div>
         {filter.map((item) => {
           return (
@@ -73,7 +73,7 @@ const Products = () => {
                     <p className="card-text lead fw-bold">
                       ${item.price}
                     </p>
-                    <a href="#" class="btn btn-outline-dark" onClick={()=>navi(`/products/${item.id}`)}>Buy Now</a>
+                    <a href="#" class="btn btn-outline-primary" onClick={()=>navi(`/products/${item.id}`)}>Buy Now</a>
                   </div>
                 </div>
               </div>

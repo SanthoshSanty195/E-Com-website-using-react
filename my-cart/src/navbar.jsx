@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
-
-
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
 
     let navi = useNavigate()
+    
+    const state = useSelector((state)=>state.cart)
+    console.log(state)
 
 
     return (
@@ -31,12 +33,12 @@ const Navbar = () => {
                             </li>
                         </ul>
                         <div className="buttons">
-                            <a href="" className="btn btn-outline-dark" onClick={()=>navi("/login")}>
+                            <a href="" className="btn btn-outline-primary" onClick={()=>navi("/login")}>
                                 <i className="fa fa-sign-in me-1"></i>Login</a>
-                            <a href="" className="btn btn-outline-dark ms-2" onClick={()=>navi("/register")}>
+                            <a href="" className="btn btn-primary ms-2" onClick={()=>navi("/register")}>
                                 <i className="fa fa-user-plus me-1"></i>Register</a>
                             <a href="" className="btn btn-outline-dark ms-2" onClick={()=>navi("/cart")}>
-                                <i className="fa fa-shopping-cart me-1"></i>Cart (0)</a>
+                                <i className="fa fa-shopping-cart me-1"></i>Cart ({state.length})</a>
                         </div>
                     </div>
                 </div>
