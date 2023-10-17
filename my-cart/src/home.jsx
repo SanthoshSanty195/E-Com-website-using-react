@@ -4,7 +4,7 @@ import Products from './products';
 const Home = () => {
 
     const style = {
-        color:"black"
+        color:"white"
     }
 
     return (

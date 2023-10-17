@@ -1,9 +1,11 @@
 
 
-const setApiData = (params) => {
-
+export const addToCart = (product) => {
     return {
-        type: "API_DATA",
-        data: params
+        type: 'ADD_TO_CART',
+        payload: product,
     }
 }
+
+
+

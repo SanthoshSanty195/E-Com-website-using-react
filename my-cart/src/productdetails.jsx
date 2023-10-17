@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Rate,Skeleton } from 'antd';
+import { useDispatch } from 'react-redux';
+import { addToCart } from "./stateManager/action/methods";
 
 
 
@@ -11,6 +13,12 @@ const ProductDetails = () => {
     let {id} = useParams();
     const [product, setProduct] = useState([])
     const [loading, setLoading] = useState(false)
+    const dispatch = useDispatch()
+    let navi = useNavigate()
+
+    const addProduct = (product)=>{
+        dispatch(addToCart(product))
+    }
 
 
     useEffect(() => {
@@ -54,8 +62,8 @@ const ProductDetails = () => {
                 </p>
                 <h3 className="display-6 fw-bold my-4">$ {product.price}</h3>
                 <p className="lead">{product.description}</p>
-                <button className="btn btn-outline-dark px-4 py-2">Add To Cart</button>
-                <button className="btn btn-dark ms-2 py-2">Go To Cart</button>
+                <button className="btn btn-outline-primary px-4 py-2" onClick={()=>addProduct(product)}>Add To Cart</button>
+                <button className="btn btn-dark ms-2 py-2" onClick={()=>navi("/cart")}>Go To Cart</button>
             </div>
             </>
         )
