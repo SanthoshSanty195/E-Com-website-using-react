@@ -1,16 +1,27 @@
 import { useState } from "react";
+import { message } from 'antd'
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState(null);
+  const navi = useNavigate()
+
+  const user = props.registeredData.find((user) => user.username === username && user.password === password);
 
   const handleLogin = () => {
-    console.log("Username: ", username);
-    console.log("Password: ", password);
+    if(user){
+      message.success(`You Logged in ${user.name}`);
+      navi("/succeslogin")
+    }else{
+      setLoginError("Invalid username or password. Please try again.");
+    }
+
   };
 
   return (
-    <div className="container" style={{ backgroundColor: "grey", paddingBottom: "150px" }}>
+    <div className="container bg-dark" style={{ paddingBottom: "150px" }}>
       <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="card mt-5" style={{ boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",borderColor:"darkgrey" }}>
@@ -27,7 +38,7 @@ const Login = () => {
                     id="username"
                     placeholder="Enter username"
                     value={username}
-                    style={{borderColor:"#e74c3c"}}
+                    style={{borderColor:"black"}}
                     onChange={(e) => setUsername(e.target.value)}
                   />
                 </div>
@@ -41,10 +52,13 @@ const Login = () => {
                     id="password"
                     placeholder="Enter password"
                     value={password}
-                    style={{borderColor:"#e74c3c"}}
+                    style={{borderColor:"black"}}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
+                {loginError && (
+                  <div className="alert alert-danger">{loginError}</div>
+                )}
                 <div className="d-flex justify-content-center">
                 <button
                   type="button"
