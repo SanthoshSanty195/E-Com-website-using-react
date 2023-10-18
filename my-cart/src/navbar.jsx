@@ -5,8 +5,7 @@ const Navbar = () => {
 
     let navi = useNavigate()
     
-    const state = useSelector((state)=>state.cart)
-    console.log(state)
+    const state = useSelector((state)=>state.cart.items)
 
 
     return (
