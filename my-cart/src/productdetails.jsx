@@ -21,11 +21,11 @@ const ProductDetails = () => {
     }
 
 
+
     useEffect(() => {
         const getProduct = () => {
             setLoading(true);
             axios.get(`https://fakestoreapi.com/products/${id}`).then((response) => {
-            console.log(response.data)
             setProduct(response.data)
             setLoading(false)
             })
