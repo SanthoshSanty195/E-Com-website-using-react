@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { message } from 'antd';
 
-const Register = () => {
+const Register = (props) => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -13,12 +13,12 @@ const Register = () => {
             password: password
         }
         console.log(obj)
-
+        props.setRegisteredData([...props.registeredData, obj])
         message.success("Registered Succesfully")
   };
 
   return (
-    <div className="container" style={{ backgroundColor: "grey", paddingBottom: "130px" }}>
+    <div className="container bg-dark" style={{ paddingBottom: "130px" }}>
       <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="card mt-5" style={{ boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)" }}>
@@ -35,7 +35,7 @@ const Register = () => {
                     id="name"
                     placeholder="Enter your name"
                     value={name}
-                    style={{borderColor:"#e74c3c"}}
+                    style={{borderColor:"black"}}
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
@@ -49,7 +49,7 @@ const Register = () => {
                     id="username"
                     placeholder="Enter a username"
                     value={username}
-                    style={{borderColor:"#e74c3c"}}
+                    style={{borderColor:"black"}}
                     onChange={(e) => setUsername(e.target.value)}
                   />
                 </div>
@@ -63,7 +63,7 @@ const Register = () => {
                     id="password"
                     placeholder="Enter a password"
                     value={password}
-                    style={{borderColor:"#e74c3c"}}
+                    style={{borderColor:"black"}}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
@@ -75,7 +75,7 @@ const Register = () => {
                   onClick={()=>{handleRegister()}}
                 >
                 <i className="fa fa-user-plus me-1"></i>
-                  Register
+                  Sign Up
                 </button>
                 </div>
               </form>

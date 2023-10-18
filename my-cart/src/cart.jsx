@@ -25,10 +25,10 @@ const Cart = () => {
 
     const emptyCart = () => {
         return (
-            <div className="px-4 my-5 bg-light rounded-3 py-5">
+            <div className="px-4 my-5 bg-dark rounded-3 py-5">
                 <div className="container py-4">
                     <div className="row">
-                        <h3 className='d-flex justify-content-center'>Your Cart is Empty</h3>
+                        <h3 className='d-flex justify-content-center' style={{color:"white"}}>Your Cart is Empty</h3>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@ const Cart = () => {
         return (
             <div className="container">
                 <div className="row">
-                    <button onClick={() => navi("/checkout")} className="btn btn-outline-primary mb-5 w-25 mx-auto">Proceed To checkout</button>
+                    <button onClick={() => navi("/checkout")} className="btn btn-success mb-5 w-25 mx-auto">Proceed To checkout</button>
                 </div>
             </div>
         );
@@ -50,21 +50,21 @@ const Cart = () => {
 
     return (
         <>
-            <h1 className='d-flex justify-content-center bg-light'>Cart</h1>
+            <h1 className='d-flex justify-content-center bg-dark' style={{color:"white"}}>Cart</h1>
             <hr />
             {state.length === 0 && emptyCart()}
             {state.length !== 0 && state.map((item) => {
                 return (
-                    <div className="px-4 my-5 bg-light rounded-3" key={item.id}>
+                    <div className="px-4 my-5 bg-dark rounded-3" key={item.id}>
                         <div className="container py-4">
                             <div className="row justify-content-center">
                                 <div className="col-md-4">
                                     <img src={item.image} alt={item.title} height="200px" width="180px" />
                                 </div>
                                 <div className="col-md-4">
-                                    <h3>{item.title}</h3>
-                                    <p className="lead fw-bold">
-                                        {item.qty} X ${item.price} = ${item.qty * item.price}
+                                    <h3 style={{color:"white"}}>{item.title}</h3>
+                                    <p className="lead fw-bold" style={{color:"white"}}>
+                                        {item.qty}  X  ${item.price}  =  ${item.qty * item.price}
                                     </p>
                                     <button className="btn btn-primary me-4" onClick={()=>{quantityMinus(item.id)}}>
                                         <i className="fa fa-minus"></i>

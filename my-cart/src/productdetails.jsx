@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { Rate,Skeleton } from 'antd';
 import { useDispatch } from 'react-redux';
 import { addToCart } from "./stateManager/action/methods";
+import { message } from 'antd';
 
 
 
@@ -18,6 +19,7 @@ const ProductDetails = () => {
 
     const addProduct = (product)=>{
         dispatch(addToCart(product))
+        message.success('Added to cart')
     }
 
 
