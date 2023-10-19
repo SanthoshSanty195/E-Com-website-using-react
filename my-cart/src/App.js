@@ -16,18 +16,7 @@ import { useState } from 'react';
 
 function App() {
 
-  const [registeredData, setRegisteredData] = useState([
-    {
-      name: "Santhosh Kumar",
-      username: "santy",
-      password: "12345"
-    },
-    {
-      name: "Monkey D Luffy",
-      username: "meat",
-      password: "67890"
-    }
-  ]);
+  const [registeredData, setRegisteredData] = useState([]);
 
 
   return (
@@ -39,9 +28,9 @@ function App() {
           <Route path="/products" element={<Products />}></Route>
           <Route path="/products/:id" element={<ProductDetails />}></Route>
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />}></Route>
           <Route path="/login" element={<Login registeredData={registeredData} />}></Route>
           <Route path="/register" element={<Register registeredData={registeredData} setRegisteredData={setRegisteredData} />}></Route>
-          <Route path="/checkout" element={<Checkout />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
         </Routes>

@@ -21,6 +21,7 @@ const Login = (props) => {
   };
 
   return (
+    <>
     <div className="container bg-dark" style={{ paddingBottom: "150px" }}>
       <div className="row justify-content-center">
         <div className="col-md-6">
@@ -76,6 +77,7 @@ const Login = (props) => {
         </div>
       </div>
     </div>
+  </>
   );
 };
 
