@@ -13,7 +13,7 @@ const Login = (props) => {
   const handleLogin = () => {
     if(user){
       message.success(`You Logged in ${user.name}`);
-      navi("/succeslogin")
+      navi("/")
     }else{
       setLoginError("Invalid username or password. Please try again.");
     }
