@@ -22,6 +22,7 @@ const Cart = () => {
         dispatch(removeFromCart(productId))
     }
 
+    
 
     const emptyCart = () => {
         return (
@@ -70,14 +71,17 @@ const Cart = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="container">
-                            <div className="row">
-                                <button onClick={() => navi("/checkout")} className="btn btn-success mb-5 w-25 mx-auto">Proceed To checkout</button>
-                            </div>
-                        </div>
                     </>
                 )
             })}
+            {state.length !== 0 && (
+                <div className="container">
+                    <div className="row">
+                        <button onClick={()=>navi("/checkout")} className="btn btn-success mb-5 w-25 mx-auto">Proceed To checkout</button>
+                    </div>
+                </div>
+            )}
+            
         </>
     )
 }
