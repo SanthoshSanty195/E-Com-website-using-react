@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { DeleteOutlined } from '@ant-design/icons'
 import { decreaseQuantity, increaseQuantity, removeFromCart } from './stateManager/action/methods'
 
@@ -9,6 +9,7 @@ const Cart = () => {
     const state = useSelector((state) => state.cart.items)
     const navi = useNavigate()
     const dispatch = useDispatch()
+    const { id } = useParams
 
     const quantityMinus = (productId) => {
         dispatch(decreaseQuantity(productId))
@@ -22,6 +23,7 @@ const Cart = () => {
         dispatch(removeFromCart(productId))
     }
 
+    
 
     const emptyCart = () => {
         return (
@@ -70,14 +72,17 @@ const Cart = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="container">
-                            <div className="row">
-                                <button onClick={() => navi("/checkout")} className="btn btn-success mb-5 w-25 mx-auto">Proceed To checkout</button>
-                            </div>
-                        </div>
                     </>
                 )
             })}
+            {state.length !== 0 && (
+                <div className="container">
+                    <div className="row">
+                        <button onClick={()=>navi("/checkout")} className="btn btn-success mb-5 w-25 mx-auto">Proceed To checkout</button>
+                    </div>
+                </div>
+            )}
+            
         </>
     )
 }
